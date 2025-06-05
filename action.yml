@@ -140,6 +140,7 @@ runs:
 
     - name: Generate Summary Report
       shell: bash
+      if: always()
       run: |
         chmod +x ./generate_summary.sh
         ./generate_summary.sh

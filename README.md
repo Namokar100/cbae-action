@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: Namokar100/cbae-action@v1.0.7
+      - uses: Namokar100/cbae-action@v1.0.8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 ```
@@ -57,13 +57,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: Namokar100/cbae-action@v1.0.7
+      - uses: Namokar100/cbae-action@v1.0.8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commands-to-install-build-tools: |
+            #Example
             sudo apt-get update
             sudo apt-get install -y libssl-dev libxml2-dev
           build-command: |
+            #Example
             mkdir build
             cd build
             cmake ..
@@ -74,11 +76,11 @@ jobs:
 
 ## Inputs
 
-| Name                           | Description                                                                 | Required | Default |
-|---------------------------------|-----------------------------------------------------------------------------|----------|---------|
-| `token`                        | GitHub token for API access.                                                | Yes      |         |
-| `commands-to-install-build-tools` | Shell commands to install dependencies before analysis.                    | No       |         |
-| `build-command`                | Shell command to build your project before analysis.                        | No       |         |
+| Name                           | Description                                                                 | Required |
+|---------------------------------|-----------------------------------------------------------------------------|----------|
+| `token`                        | GitHub token for API access.                                                | Yes      |     
+| `commands-to-install-build-tools` | Shell commands to install dependencies before analysis.                    | No       |    
+| `build-command`                | Shell command to build your project before analysis.                        | No       |     
 
 ---
 

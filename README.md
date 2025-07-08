@@ -40,9 +40,17 @@ jobs:
 
 ---
 
-### Example with Custom Dependency Installation and Build Command
+## Why Do I Need Custom Build and Dependency Commands?
 
-If your project requires specific libraries, tools, or a custom build process, you can provide the necessary shell commands using `commands-to-install-build-tools` and `build-command`:
+The CBOM GitHub Action works out-of-the-box for many projects because GitHub runners include many common tools and libraries.  
+However, **if your build fails due to missing packages or custom steps**, you should provide commands to install dependencies and build your project.
+
+Use the `commands-to-install-build-tools` and `build-command` inputs to:
+
+- Install any required libraries or tools not present by default.
+- Run custom build steps needed for your project.
+
+### Example 
 
 ```yaml
 name: Run CBOM Analysis with Custom Setup
@@ -72,13 +80,16 @@ jobs:
             make -j$(nproc)
 ```
 
+### Summary:
+Add custom commands if you see errors about missing dependencies or failed builds, so the Action can analyze your code successfully.
+
 ---
 
 ## Inputs
 
 | Name                           | Description                                                                 | Required |
 |---------------------------------|-----------------------------------------------------------------------------|----------|
-| `token`                        | GitHub token for API access.                                                | Yes      |     
+| `token`                        | GitHub token for API access.    (As CBAE is not yet opensource)                                            | Yes      |     
 | `commands-to-install-build-tools` | Shell commands to install dependencies before analysis.                    | No       |    
 | `build-command`                | Shell command to build your project before analysis.                        | No       |     
 
